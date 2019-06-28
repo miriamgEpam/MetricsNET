@@ -1,0 +1,14 @@
+﻿@model MetricsDotNet.Models.Documents; 
+ <h2> Upload document</h2>
+
+
+ <form  asp-controller="Document"  method="post" class="form-horizontal" asp-action="Index"  enctype="multipart/form-data">
+     
+     <input type="file" class="form-control" name="file"  />
+
+     <div class="form-group">
+         <div class="col-md-offset-2 col-md-5">
+            <button type="submit" >Upload file </button>
+         </div>
+     </div>
+ </form>

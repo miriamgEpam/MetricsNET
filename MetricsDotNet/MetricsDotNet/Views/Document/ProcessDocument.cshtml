@@ -1,0 +1,257 @@
+﻿@model MetricsDotNet.ViewModels.FieldsCapturedViewModel
+
+@{
+    ViewData["Title"] = "ProcessDocument";
+}
+
+<script type="text/javascript">
+
+    function ChangeFunctionFeedback() {
+        var inputCompliance = document.getElementById("inputFeedbackC").value;
+        var Total = document.getElementById("Total").value;
+        document.getElementById("inputFeedbackP").value = parseFloat((inputCompliance / Total) * 100).toFixed(2);
+    }
+
+    function ChangeFunctionCTI() {
+        var inputCompliance = document.getElementById("inputCTIC").value;
+        var Total = document.getElementById("Total").value;
+        document.getElementById("inputCTIP").value = parseFloat((inputCompliance / Total) * 100).toFixed(2);
+    }
+
+    function ChangeFunctionASMT() {
+        var inputCompliance = document.getElementById("inputASMTC").value;
+        var Total = document.getElementById("Total").value;
+        document.getElementById("inputASMTP").value = parseFloat((inputCompliance / Total) * 100).toFixed(2);
+    }
+
+    function ChangeFunctionBandMix() {
+        var inputCompliance = document.getElementById("inputBandMixC").value;
+        var Total = document.getElementById("Total").value;
+        document.getElementById("inputBandMixP").value = parseFloat((inputCompliance / Total) * 100).toFixed(2);
+    }
+
+    function ChangeFunctionMgmtVel() {
+        var inputCompliance = document.getElementById("inputMgmtVelC").value;
+        var Total = document.getElementById("Total").value;
+        document.getElementById("inputMgmtVelP").value = parseFloat((inputCompliance / Total) * 100).toFixed(2);
+    }
+
+    function ChangeFunctionAttrition() {
+        var inputCompliance = document.getElementById("inputAttritionC").value;
+        var Total = document.getElementById("Total").value;
+        document.getElementById("inputAttitionP").value = parseFloat((inputCompliance / Total) * 100).toFixed(2);
+    }
+
+    function ChangeFunctionRotAgree() {
+        var inputCompliance = document.getElementById("inputRotationAC").value;
+        var Total = document.getElementById("Total").value;
+        document.getElementById("inputRotationAP").value = parseFloat((inputCompliance / Total) * 100).toFixed(2);
+    }
+
+    function ChangeFunctionRMBadges() {
+        var inputCompliance = document.getElementById("inputRMBadgesC").value;
+        var Total = document.getElementById("Total").value;
+        document.getElementById("inputRMBadgesP").value = parseFloat((inputCompliance / Total) * 100).toFixed(2);
+    }
+
+    function ChangeFunctionMPP() {
+        var inputCompliance = document.getElementById("inputMentoringC").value;
+        var Total = document.getElementById("Total").value;
+        document.getElementById("inputMentoringP").value = parseFloat((inputCompliance / Total) * 100).toFixed(2);
+    }
+
+    function ChangeFunctionTalk() {
+        var inputCompliance = document.getElementById("inputTalkC").value;
+        var Total = document.getElementById("Total").value;
+        document.getElementById("inputTalkP").value = parseFloat((inputCompliance / Total) * 100).toFixed(2);
+    }
+    function ChangeFunctionGrow() {
+        var inputCompliance = document.getElementById("inputGrowCompliance").value;
+        var Total = document.getElementById("Total").value;
+        document.getElementById("inputGrowPercentage").value = parseFloat((inputCompliance / Total) * 100).toFixed(2);
+    }
+    function ChangeFunctionUtilization() {
+        var inputCompliance = document.getElementById("inputUtilizationC").value;
+        var Total = document.getElementById("Total").value;
+        document.getElementById("inputUtilizationP").value = parseFloat((inputCompliance / Total) * 100).toFixed(2);
+    }
+</script>
+<h2>ProcessDocument</h2>
+
+<form asp-action="SaveInfo" asp-controller="Document" method="post" class="form-horizontal" role="form">
+    <div class="form-group">
+        <label asp-for="Total" class="col-md-2 control-label">Total</label>
+        <div class="col-md-5">
+            <input asp-for="Total" class="form-control" id="Total" readonly="readonly" />
+        </div>
+        <div class="col-md-5">
+            <label class="col-md-2 control-label">Percentage</label>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Talk</label>
+        <div class="col-md-5">
+            <input asp-for="TalkCompliance" type="number" class="form-control" id="inputTalkC" oninput="ChangeFunctionTalk()" min="0" />
+        </div>
+        <div class="col-md-5">
+            <input asp-for="TalkPercentage" class="form-control" readonly="readonly" id="inputTalkP" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Grow</label>
+        <div class="col-md-5">
+            <input asp-for="GrowCompliance" type="number" id="inputGrowCompliance" class="form-control" oninput="ChangeFunctionGrow()" min="0"  />
+        </div>
+        <div class="col-md-5">
+            <input asp-for="GrowPercentage" id="inputGrowPercentage" readonly="readonly" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Feedback</label>
+        <div class="col-md-5">
+            <input asp-for="FeedbackCompliance" type="number" id="inputFeedbackC" oninput="ChangeFunctionFeedback()" class="form-control" min="0"  />
+        </div>
+        <div class="col-md-5">
+            <input asp-for="FeedbackPercentage" class="form-control" id="inputFeedbackP" readonly="readonly" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Utilization</label>
+        <div class="col-md-5">
+            <input asp-for="UtilizationCompliance" type="number" class="form-control" id="inputUtilizationC" oninput="ChangeFunctionUtilization()" min="0"  />
+        </div>
+        <div class="col-md-5">
+            <input asp-for="UtilizationPercentage" class="form-control" readonly="readonly" id="inputUtilizationP" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Certified Technical Interviewers</label>
+        <div class="col-md-5">
+            <input asp-for="CITCompliance" type="number" oninput="ChangeFunctionCTI()" id="inputCTIC" class="form-control" min="0"  />
+        </div>
+        <div class="col-md-5">
+            <input asp-for="CITPercentage" id="inputCTIP" class="form-control" readonly="readonly" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Succesful ASMT</label>
+        <div class="col-md-5">
+            <input asp-for="SucessASMTCompliance" type="number" oninput="ChangeFunctionASMT()" id="inputASMTC" class="form-control" min="0"  />
+        </div>
+        <div class="col-md-5">
+            <input asp-for="SucessASMTPercentage" id="inputASMTP" class="form-control" readonly="readonly" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Management Velocity</label>
+        <div class="col-md-5">
+            <input asp-for="MgmtVelocityCompliance" type="number" class="form-control" oninput="ChangeFunctionMgmtVel()" id="inputMgmtVelC" min="0"  />
+        </div>
+        <div class="col-md-5">
+            <input asp-for="MgmtVelocityPercentage" class="form-control" type="number" id="inputMgmtVelP" readonly="readonly" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Attrition</label>
+        <div class="col-md-5">
+            <input asp-for="AttrittionCompliance" class="form-control" type="number" id="inputAttritionC" oninput=" ChangeFunctionAttrition()" min="0"  />
+        </div>
+        <div class="col-md-5">
+            <input asp-for="AttrittionPercentage" class="form-control" id="inputAttitionP" readonly="readonly" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Rotation Agreements</label>
+        <div class="col-md-5">
+            <input asp-for="RotationAgreeCompliance" class="form-control" type="number" oninput="ChangeFunctionRotAgree()" id="inputRotationAC" min="0"  />
+        </div>
+        <div class="col-md-5">
+            <input asp-for="RotationAgreePercentage" class="form-control" id="inputRotationAP" readonly="readonly" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">RM Badges</label>
+        <div class="col-md-5">
+            <input asp-for="RMBadgesCompliance" class="form-control" type="number" id="inputRMBadgesC" oninput="ChangeFunctionRMBadges()" />
+        </div>
+        <div class="col-md-5">
+            <input asp-for="RMBandgesPercentage" class="form-control" id="inputRMBadgesP" readonly="readonly" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Mentoring Program Participation</label>
+        <div class="col-md-5">
+            <input asp-for="MentoringPPCompliance" class="form-control" type="number" oninput="ChangeFunctionMPP()" id="inputMentoringC" min="0"  />
+        </div>
+        <div class="col-md-5">
+            <input asp-for="MentoringPPPercentage" class="form-control" id="inputMentoringP" readonly="readonly" />
+        </div>
+    </div>
+
+    <hr />
+    <h4>Band Mix</h4>
+    <div class="form-group">
+        <label class="col-md-2 control-label">A2</label>
+        <div class="col-md-3">
+            <input class="form-control" type="number" asp-for="BandMixA2" readonly="readonly" />
+        </div>
+        <div class="col-md-3">
+            <input class="form-control" value="2" readonly="readonly" />
+        </div>
+        <div class="col-md-3">
+            <input class="form-control" type="number" asp-for="BandMixA2Total" readonly="readonly" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">A3</label>
+        <div class="col-md-3">
+            <input class="form-control" type="number" id="" asp-for="BandMixA3" readonly="readonly" />
+        </div>
+        <div class="col-md-3">
+            <input class="form-control" value="3" readonly="readonly" />
+        </div>
+        <div class="col-md-3">
+            <input class="form-control" id="" type="number" asp-for="BandMixA3Total" readonly="readonly" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">A4</label>
+        <div class="col-md-3">
+            <input class="form-control" asp-for="BandMixA4" readonly="readonly" />
+        </div>
+        <div class="col-md-3">
+            <input class="form-control" value="4" readonly="readonly" />
+        </div>
+        <div class="col-md-3">
+            <input class="form-control" id="" type="number" asp-for="BandMixA4Total" readonly="readonly" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Band mix</label>
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-3">
+            <input class="form-control" id="" type="number" asp-for="BandMixPercentage" readonly="readonly" />
+        </div>
+    </div>
+    <hr />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input type="submit" class="btn btn-primary" value="Save information" />
+        </div>
+    </div>
+
+</form>
+
